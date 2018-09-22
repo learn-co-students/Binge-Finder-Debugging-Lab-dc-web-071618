@@ -17,19 +17,22 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    Adapter.getShows().then(shows => this.setState({shows}))
+    Adapter.getShows().then(shows => {
+      console.log(shows)
+      this.setState({shows})})
   }
 
   componentDidUpdate = () => {
     window.scrollTo(0, 0)
   }
 
-  handleSearch (e){
+  handleSearch = (e) => {
     this.setState({ searchTerm: e.target.value.toLowerCase() })
   }
 
   handleFilter = (e) => {
-    e.target.value === "No Filter" ? this.setState({ filterRating:"" }) : this.setState({ filterRating: e.target.value})
+    debugger
+    e.target.value === "No Filter" ? this.setState({ filterRating:"" }) : this.setState({ filterByRating: e.target.value})
   }
 
   selectShow = (show) => {
